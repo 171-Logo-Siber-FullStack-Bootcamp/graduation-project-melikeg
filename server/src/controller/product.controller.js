@@ -6,8 +6,6 @@ const esClient = new Client({ node: "http://localhost:9200" });
 
 exports.createProduct = async (req, res) => {
   try {
-    //-------------------- save postgresql
-    /*
     const { productname, description, quantity, price } = req.body;
     const { rows } = await db.query(
       "INSERT INTO products (productname, description, quantity, price) VALUES ($1, $2, $3, $4)",
@@ -19,24 +17,7 @@ exports.createProduct = async (req, res) => {
       body: {
         product: { productname, description, quantity, price },
       },
-    });*/
-    //-----------------------elasticSearch
-    esClient
-      .index({
-        index: "products",
-        body: {
-          productname: req.body.productname,
-          description: req.body.description,
-          quantity: req.body.quantity,
-          price: req.body.price,
-        },
-      })
-      .then((response) => {
-        return res.json({ message: "Indexing successful" });
-      })
-      .catch((err) => {
-        return res.status(500).json({ message: "error" });
-      });
+    });
   } catch (error) {
     console.log("Error occured", error.message);
     return res.status(400).json({ message: error.message });

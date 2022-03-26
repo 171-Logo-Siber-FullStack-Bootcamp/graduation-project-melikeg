@@ -1,6 +1,6 @@
 const { response } = require("express");
 const db = require("../config/database");
-
+/*
 exports.createUser = async (req, res) => {
   try {
     const { email, fullname, password } = req.body;
@@ -19,7 +19,7 @@ exports.createUser = async (req, res) => {
     console.log("Error occured", error.message);
     return res.status(400).json({ message: error.message });
   }
-};
+};*/
 
 exports.listAllUsers = async (req, res) => {
   const response = await db.query("SELECT * FROM users ORDER BY userid ASC");
@@ -61,7 +61,7 @@ exports.deleteUserById = async (req, res) => {
     return res.status(400).json({ message: error.message });
   }
 };
-
+/*
 exports.authenticateUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -78,4 +78,4 @@ exports.authenticateUser = async (req, res) => {
     console.log("Error occured", error.message);
     return res.status(400).json({ message: error.message });
   }
-};
+};*/
