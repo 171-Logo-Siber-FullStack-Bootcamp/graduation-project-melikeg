@@ -16,37 +16,35 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html"
-                >Elektronik <span class="sr-only">(current)</span></a
-              >
+            <li class="nav-item">
+              <a class="nav-link" href="/">Elektronik </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">Moda</a>
+              <a class="nav-link" href="/">Moda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="product.html">Ev, Yaşam</a>
+              <a class="nav-link" href="/">Ev, Yaşam</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="why.html">Kırtasiye, Ofis</a>
+              <a class="nav-link" href="/">Kırtasiye, Ofis</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="testimonial.html">Oto, Bahçe</a>
+              <a class="nav-link" href="/">Oto, Bahçe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Anne, Bebek</a>
+              <a class="nav-link" href="/">Anne, Bebek</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Spor </a>
+              <a class="nav-link" href="/">Spor </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Yapı Market</a>
+              <a class="nav-link" href="/">Yapı Market</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Petshop</a>
+              <a class="nav-link" href="/">Petshop</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Kitap, Müzik</a>
+              <a class="nav-link" href="/">Kitap, Müzik</a>
             </li>
           </ul>
         </div>

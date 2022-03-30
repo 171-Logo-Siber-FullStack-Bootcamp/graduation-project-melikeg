@@ -8,37 +8,55 @@ const routes = [
     component: MainPage,
   },
   {
-    path: "/create",
-    name: "Create",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(
-        /* webpackChunkName: "create" */ "../views/seller/CreateProduct.vue"
-      ),
+    path: "/signin",
+    name: "SignIn",
+    component: () => import("../views/SignIn.vue"),
   },
   {
-    path: "/update/:id",
-    name: "Update",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(
-        /* webpackChunkName: "create" */ "../views/seller/UpdateProduct.vue"
-      ),
+    path: "/signup",
+    name: "SignUp",
+    component: () => import("../views/SignUp.vue"),
   },
   {
-    path: "/seller",
+    path: "/detail/:id",
+    name: "Detail",
+    component: () => import("../components/MainContentComp/DetailProduct.vue"),
+  },
+  {
+    path: "/shoppingbag",
+    name: "MyOrders",
+    component: () => import("../components/MainContentComp/MyOrders.vue"),
+  },
+  {
+    path: "/sellerpanel",
     name: "sellerDashboard",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(
-        /* webpackChunkName: "update" */ "../views/seller/SellerDashboard.vue"
-      ),
+    component: () => import("../components/Seller/MyProducts.vue"),
+  },
+  {
+    path: "/sellerpanel/create",
+    name: "Create",
+    component: () => import("../components/Seller/CreateProduct.vue"),
+  },
+  {
+    path: "/sellerpanel/update/:id",
+    name: "Update",
+    component: () => import("../components/Seller/UpdateProduct.vue"),
+  },
+  {
+    path: "/sellerpanel/productlist",
+    name: "ProductList",
+    component: () => import("../components/Seller/MyProducts.vue"),
+  },
+  {
+    path: "/sellerpanel/profile",
+    name: "Profile",
+    component: () => import("../components/Seller/MyProfile.vue"),
+  },
+
+  {
+    path: "/sellerpanel/orders",
+    name: "Orders",
+    component: () => import("../components/Seller/IncomingOrders.vue"),
   },
 ];
 

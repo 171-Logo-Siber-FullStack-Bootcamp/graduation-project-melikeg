@@ -1,27 +1,42 @@
 const db = require("../config/database");
+const multer = require("multer");
+const path = require("path");
+
 //const esClient = require("../config/elasticSearch");
 const { Client } = require("@elastic/elasticsearch");
 
 const esClient = new Client({ node: "http://localhost:9200" });
+//upload an image
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../../uploads"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, `image-${Date.now()}` + path.extname(file.originalname));
+    //path.extname get the uploaded file extension
+  },
+});
+
+const multerFilter = (req, file, cb) => {
+  if (!file.originalname.match(/\.(png|jpg)$/)) {
+    // upload only png and jpg format
+    return cb(new Error("Please upload a Image"));
+  }
+  cb(null, true);
+};
+
+exports.upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
 
 exports.createProduct = async (req, res) => {
-  try {
-    const { productname, description, quantity, price } = req.body;
-    const { rows } = await db.query(
-      "INSERT INTO products (productname, description, quantity, price) VALUES ($1, $2, $3, $4)",
-      [productname, description, quantity, price]
-    );
-
-    res.status(201).send({
-      message: "Product added successfully!",
-      body: {
-        product: { productname, description, quantity, price },
-      },
-    });
-  } catch (error) {
-    console.log("Error occured", error.message);
-    return res.status(400).json({ message: error.message });
-  }
+  const allquery = await db.query(
+    `INSERT INTO products(productname, description, quantity, price, image) VALUES ('${req.body.productname}','${req.body.description}', '${req.body.quantity}','${req.body.price}','${req.file.filename}')`
+  );
+  res
+    .status(200)
+    .json({ statusCode: 200, status: true, message: "Image added", data: [] });
 };
 
 exports.listAllProducts = async (req, res) => {

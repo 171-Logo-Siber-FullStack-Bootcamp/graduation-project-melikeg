@@ -1,25 +1,5 @@
 const { response } = require("express");
 const db = require("../config/database");
-/*
-exports.createUser = async (req, res) => {
-  try {
-    const { email, fullname, password } = req.body;
-    const { rows } = await db.query(
-      "INSERT INTO users (email, fullname, password) VALUES ($1, $2, crypt($3, gen_salt('bf')))",
-      [email, fullname, password]
-    );
-
-    res.status(200).send({
-      message: "User added successfully!",
-      body: {
-        user: { email, fullname, password },
-      },
-    });
-  } catch (error) {
-    console.log("Error occured", error.message);
-    return res.status(400).json({ message: error.message });
-  }
-};*/
 
 exports.listAllUsers = async (req, res) => {
   const response = await db.query("SELECT * FROM users ORDER BY userid ASC");
@@ -49,10 +29,6 @@ exports.deleteUserById = async (req, res) => {
     const { rows } = await db.query("DELETE FROM users WHERE userid = $1", [
       userId,
     ]);
-
-    if (!rows.length)
-      return res.status(404).json({ message: "user not found" });
-
     return res
       .status(200)
       .json({ message: "User deleted successfully!", userId });
