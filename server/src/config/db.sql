@@ -48,13 +48,13 @@ CREATE TABLE orders(
     id SERIAL PRIMARY KEY,
     total FLOAT,
     quantity INT,
-    userid INTEGER REFERENCES users(id),
-    productid INTEGER REFERENCES products(id),
+    userid INTEGER REFERENCES users(userid),
+    productid INTEGER REFERENCES products(productid),
 );
 
 
 CREATE TABLE usersvsproducts (
-    userid INTEGER NOT NULL REFERENCES users(id),
-    productid INTEGER NOT NULL REFERENCES products(id)
+    userid INTEGER NOT NULL REFERENCES users(userid),
+    productid INTEGER NOT NULL REFERENCES products(productid)
 );
 
